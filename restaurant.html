@@ -1,0 +1,267 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Delight Dine | Restaurant</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet" />
+    <style>
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+        body {
+            font-family: 'Poppins', sans-serif;
+            background: url('https://images.unsplash.com/photo-1504674900247-0877df9cc836?auto=format&fit=crop&w=1950&q=80') no-repeat center center fixed;
+            background-size: cover;
+            color: #222;
+            padding-bottom: 30px;
+            scroll-behavior: smooth;  /* Enables smooth scrolling */
+        }
+        header {
+            background: rgba(255, 87, 34, 0.9);
+            color: white;
+            padding: 1rem 2rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+        }
+        header h1 {
+            font-size: 2rem;
+        }
+        nav a {
+            color: white;
+            text-decoration: none;
+            margin: 0 1rem;
+            font-weight: 500;
+            transition: color 0.3s ease;
+        }
+        nav a:hover {
+            color: #ffeb3b;
+        }
+        .container {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 2rem;
+            padding: 2rem;
+            background: transparent;
+            min-height: calc(100vh - 80px);
+        }
+        .card {
+            background-color: rgba(255, 255, 255, 0.85);
+            padding: 2rem;
+            border-radius: 10px;
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
+            backdrop-filter: blur(10px);
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            height: 100%;
+        }
+        h2 {
+            margin-bottom: 1rem;
+            color: #ff5722;
+            font-size: 2rem;
+        }
+        .menu-item {
+            display: flex;
+            justify-content: space-between;
+            margin: 0.5rem 0;
+        }
+        .menu-item button {
+            background-color: #ff7043;
+            color: white;
+            border: none;
+            padding: 0.4rem 0.9rem;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+        .menu-item button:hover {
+            background-color: #e64a19;
+        }
+        form {
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            height: 100%;
+        }
+        input, textarea {
+            margin-bottom: 1rem;
+            padding: 0.8rem;
+            border-radius: 5px;
+            border: 1px solid #ccc;
+        }
+        input[type="submit"] {
+            background-color: #ff5722;
+            color: white;
+            border: none;
+            cursor: pointer;
+            font-weight: bold;
+            transition: background 0.3s;
+        }
+        input[type="submit"]:hover {
+            background-color: #d84315;
+        }
+        .error {
+            color: red;
+            margin-bottom: 1rem;
+        }
+        .to-do-list {
+            margin-top: 20px;
+        }
+        .to-do-item {
+            background-color: #fff3e0;
+            padding: 0.6rem;
+            margin-bottom: 0.5rem;
+            display: flex;
+            justify-content: space-between;
+            border-radius: 5px;
+        }
+        .to-do-item button {
+            background-color: crimson;
+            color: white;
+            border: none;
+            border-radius: 4px;
+            padding: 0.3rem 0.6rem;
+            cursor: pointer;
+        }
+        #contact-details {
+            background: rgba(255, 255, 255, 0.85);
+            padding: 2rem;
+            border-radius: 10px;
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
+            margin-top: 2rem;
+            backdrop-filter: blur(10px);
+        }
+        #contact-details h2 {
+            color: #ff5722;
+        }
+        #contact-details p {
+            font-size: 1.1rem;
+            margin: 0.5rem 0;
+        }
+        @media (max-width: 768px) {
+            .container {
+                grid-template-columns: 1fr;
+            }
+            header {
+                flex-direction: column;
+                align-items: flex-start;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>Delight Dine</h1>
+        <nav>
+            <a href="#">Home</a>
+            <a href="#menu">Menu</a>
+            <a href="#contact-details">Contact</a> <!-- Updated to target the contact section -->
+        </nav>
+    </header>
+    <div class="container">
+        <div class="card" id="menu">
+            <h2>Today's Menu</h2>
+            <div class="menu-item">
+                <span>Margherita Pizza</span>
+                <button onclick="addFavorite('Margherita Pizza')">Add</button>
+            </div>
+            <div class="menu-item">
+                <span>Pasta Alfredo</span>
+                <button onclick="addFavorite('Pasta Alfredo')">Add</button>
+            </div>
+            <div class="menu-item">
+                <span>Paneer Tikka</span>
+                <button onclick="addFavorite('Paneer Tikka')">Add</button>
+            </div>
+            <div class="menu-item">
+                <span>Brownie Sundae</span>
+                <button onclick="addFavorite('Brownie Sundae')">Add</button>
+            </div>
+            <div class="menu-item">
+                <span>Tandoori Chicken</span>
+                <button onclick="addFavorite('Tandoori Chicken')">Add</button>
+            </div>
+            <div class="menu-item">
+                <span>Veggie Burger</span>
+                <button onclick="addFavorite('Veggie Burger')">Add</button>
+            </div>
+            <div class="menu-item">
+                <span>Lemon Iced Tea</span>
+                <button onclick="addFavorite('Lemon Iced Tea')">Add</button>
+            </div>
+            <h3 style="margin-top:1.5rem; color: #ff5722; font-size: 1.3rem;">🍴 Your Favorite Picks</h3>
+            <ul id="favList"></ul>
+        </div>
+        <div class="card" id="contact">
+            <h2>Reserve a Table</h2>
+            <form id="reserveForm">
+                <input type="text" id="name" placeholder="Your Name" required />
+                <input type="email" id="email" placeholder="Your Email" required />
+                <textarea id="message" rows="6" placeholder="Any special request?" required></textarea>
+                <p class="error" id="formError"></p>
+                <input type="submit" value="Book Now" />
+            </form>
+            <div class="to-do-list">
+                <h2>Dynamic To-Do List</h2>
+                <input type="text" id="newTodo" placeholder="Add a new task..." />
+                <button onclick="addToDo()">Add Task</button>
+                <ul id="todoList"></ul>
+            </div>
+        </div>
+    </div>
+    <div id="contact-details">
+        <h2>Contact Us</h2>
+        <p>Phone: 7890765879</p>
+        <p>Email: contact@delightdine.com</p>
+        <p>Address: 123 Food Street, Gourmet City, GC 12345</p>
+    </div>
+    <script>
+        document.getElementById("reserveForm").addEventListener("submit", function (e) {
+            e.preventDefault();
+            const name = document.getElementById("name").value.trim();
+            const email = document.getElementById("email").value.trim();
+            const message = document.getElementById("message").value.trim();
+            const error = document.getElementById("formError");
+            const emailRegex = /^[^ ]+@[^ ]+\.[a-z]{2,3}$/;
+            if (!name || !email || !message) {
+                error.textContent = "Please fill in all fields.";
+                return;
+            }
+            if (!emailRegex.test(email)) {
+                error.textContent = "Enter a valid email address.";
+                return;
+            }
+            error.textContent = "";
+            alert("Reservation sent successfully!");
+            document.getElementById("reserveForm").reset();
+        });
+        function addFavorite(dish) {
+            const ul = document.getElementById("favList");
+            const li = document.createElement("li");
+            li.classList.add("to-do-item");
+            li.innerHTML = `${dish} <button onclick="this.parentElement.remove()">Remove</button>`;
+            ul.appendChild(li);
+        }
+        function addToDo() {
+            const todoInput = document.getElementById("newTodo");
+            const todoText = todoInput.value.trim();
+            if (todoText === "") {
+                alert("Please enter a task.");
+                return;
+            }
+            const ul = document.getElementById("todoList");
+            const li = document.createElement("li");
+            li.classList.add("to-do-item");
+            li.innerHTML = `${todoText} <button onclick="this.parentElement.remove()">Remove</button>`;
+            ul.appendChild(li);
+            todoInput.value = "";
+        }
+    </script>
+</body>
+</html>
